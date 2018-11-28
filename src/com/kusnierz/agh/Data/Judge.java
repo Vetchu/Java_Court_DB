@@ -6,9 +6,9 @@ public class Judge {
 
     @Override
     public String toString() {
-        return "Judge{" +
-                "name='" + name + '\'' +
-                ", specialRole='" + specialRole + '\'' +
-                '}';
+        if(specialRole!=null)
+        return  "Name: " + name + '\n' +
+                "  SpecialRole: " + specialRole+'\n';
+        else return  "Name: " + name + '\n';
     }
 }
