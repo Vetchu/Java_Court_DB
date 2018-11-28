@@ -3,7 +3,7 @@ package com.kusnierz.agh.Data;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Jugdment {
+public class Judgment {
     Integer Id;
     String Signature;
     String Date;
