@@ -13,39 +13,67 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DataLoader {
-    public List<Jugdment> LoadData(String path) throws IOException, ParseException {
+    public StorageSystem loadData(String path) throws IOException, ParseException {
+        StorageSystem storage=new StorageSystem();
+        for(CourtCase courtCase:parseData(path)){
+            storage.putBySignature(courtCase);
+        }
+        return storage;
+    }
+    private List<CourtCase> parseData(String path) throws IOException, ParseException {
         JSONParser parser= new JSONParser();
         JSONObject json = (JSONObject) parser.parse(new FileReader(path));
-        return putIntoStorage(json);
+        JSONArray items= (JSONArray) json.get("items");
+        return convertToJudgmentList(items);
     }
 
-    public List<Jugdment> putIntoStorage(JSONObject JSON){
-        JSONArray items= (JSONArray) JSON.get("items");
-        List<Jugdment> jugdArray = new ArrayList<>();
+    private List<CourtCase> convertToJudgmentList(JSONArray items){
+        List<CourtCase> judgArray = new ArrayList<>();
         for (Object rawobject: items) {
             JSONObject object=(JSONObject) rawobject;
 
-            Jugdment jugdment=new Jugdment();
-            jugdment.Id =  ((Long)  object.get("id")).intValue();
-            jugdment.Date = (String) object.get("judgmentDate");
-            jugdment.CourtType = (String) object.get("courtType");
-            /*jugdment.Jugdes = new List<String>;
+            CourtCase courtCase =new CourtCase();
+            courtCase.Id =  ((Long)  object.get("id")).intValue();
+            courtCase.Signature=(String) ((JSONObject)((JSONArray) object.get("courtCases")).get(0)).get("caseNumber");
+            courtCase.Date = (String) object.get("judgmentDate");
+            courtCase.CourtType = (String) object.get("courtType");
+            courtCase.Jugdes = new LinkedList<Judge>();
             JSONArray judgeArray= (JSONArray) object.get("judges");
-            for(Object judge:judgeArray){
-                ((List) jugdment.Jugdes).add(judge.get("name"));
-            }*/
+            for(Object rawjudge:judgeArray){
+                 Judge judge=new Judge();
+                 judge.name=(String) ((JSONObject)rawjudge).get("name");
+                 judge.specialRole= ((JSONArray) ((JSONObject)rawjudge).get("specialRoles"))==null?(String)((JSONArray) ((JSONObject)rawjudge).get("specialRoles")).get(0) : null;
+                 courtCase.Jugdes.add(judge);
+            }
+            judgArray.add(courtCase);
 
-            jugdArray.add(jugdment);
-            System.out.println(jugdment.Id+jugdment.Date+jugdment.CourtType);
+            System.out.println(courtCase.Id+courtCase.Signature+courtCase.Date+courtCase.CourtType+courtCase.Jugdes);
         }
-        return jugdArray;
+        return judgArray;
     }
 
 
     public static void main(String[] main){
         DataLoader dataLoader=new DataLoader();
         try {
-            dataLoader.LoadData("./src/com/kusnierz/agh/Json/judgments-348.json");
+
+            /*
+            try (Stream<Path> paths = Files.walk(Paths.get("./Json"))) {
+                paths
+                        .filter(Files::isRegularFile)
+                        //.forEach(System.out::println);
+                        .forEach(path -> {
+                            try {
+                                System.out.println(Files.readAllLines(path));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+            }
+            */
+
+            dataLoader.loadData("./Json/judgments-348.json");
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }

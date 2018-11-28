@@ -1,12 +1,22 @@
 package com.kusnierz.agh.Data;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Judgment {
+public class CourtCase {
     Integer Id;
     String Signature;
     String Date;
     String CourtType;
-    LinkedList<String> Jugdes;
+    LinkedList<Judge> Jugdes;
+
+
+    @Override
+    public String toString() {
+        return "CourtCase{" +
+                "Signature='" + Signature + '\'' +
+                ", Date='" + Date + '\'' +
+                ", CourtType='" + CourtType + '\'' +
+                ", Jugdes=" + Jugdes +
+                '}';
+    }
 }
