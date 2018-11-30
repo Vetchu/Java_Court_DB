@@ -3,11 +3,12 @@ package com.kusnierz.agh.Data;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
-public class CourtCase {
+public class Judgment {
     Integer Id;
     public String Signature;
     public LocalDate Date;
     public String CourtType;
+    public String JudgmentType;
 
 
 
@@ -33,5 +34,6 @@ public class CourtCase {
                 "Date: " + Date + '\n' +
                 "CourtTypeHash: " + CourtType + '\n' +
                 "Jugdes: " +'\n'+ judgesString+'\n';
+                //"JugdmentType: "+JudgmentType+"\n";
     }
 }

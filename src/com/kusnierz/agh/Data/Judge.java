@@ -1,7 +1,7 @@
 package com.kusnierz.agh.Data;
 
 public class Judge {
-    String name;
+    public String name;
     String specialRole;
 
     @Override

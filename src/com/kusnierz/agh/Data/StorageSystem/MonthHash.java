@@ -1,12 +1,12 @@
 package com.kusnierz.agh.Data.StorageSystem;
 
-import com.kusnierz.agh.Data.CourtCase;
+import com.kusnierz.agh.Data.Judgment;
 
 import java.util.LinkedList;
 
-public class Month extends Hash{
-    public void put2(CourtCase courtCase){
-        hashMap.computeIfAbsent(courtCase.Date.getMonth().toString(), k -> new LinkedList<CourtCase>());
-        hashMap.get(courtCase.Date.getMonth().toString()).add(courtCase);
+public class MonthHash extends Hash{
+    public void put2(Judgment judgment){
+        hashMap.computeIfAbsent(judgment.Date.getMonth().toString(), k -> new LinkedList<Judgment>());
+        hashMap.get(judgment.Date.getMonth().toString()).add(judgment);
     }
 }

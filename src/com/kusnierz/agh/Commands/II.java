@@ -1,4 +1,33 @@
 package com.kusnierz.agh.Commands;
 
-public class IIgetSig {
+import com.kusnierz.agh.Data.Judgment;
+import com.kusnierz.agh.Data.Storage;
+
+import java.util.LinkedList;
+
+public class II implements ICommand{
+
+    @Override
+    public String Command(String command, Storage storage) {
+        //String liner="I UK 388/10 I UK 388/10";
+        String[] commands=command.split("\\s+");
+        String[] sigs=new String[commands.length/3];
+
+        for(int i=0;i< commands.length;i++){
+            if(i%3==0)sigs[(i)/3]="";
+            sigs[i/3]+=i%3==2 ? commands[i] : commands[i]+" ";
+        }
+
+        StringBuilder base= new StringBuilder();
+        for (String sig:sigs) {
+            LinkedList<Judgment> a = storage.signatureHash.getByString(sig);
+            if(a!=null) {
+                for (Judgment judgment : a)
+                    base.append(judgment.toString());
+            }
+            else
+                base.append("Could not find any case signed ").append(sig).append("\n");
+        }
+        return base.toString();
+    }
 }
