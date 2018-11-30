@@ -54,6 +54,7 @@ public class ConsoleEmulator {
                         System.out.println("Incorrect command");
             }
             else System.out.println("No arguments given");
+
             }
 
         //2.4. sig
