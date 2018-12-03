@@ -1,5 +1,5 @@
 package com.kusnierz.agh.Data.StorageSystem;
 
-public class SignatureHash extends Hash{
+public class SignatureHash extends Index {
 
 }

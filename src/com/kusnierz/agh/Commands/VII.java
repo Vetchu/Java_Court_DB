@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class VII implements ICommand{
 
     @Override
-    public String Command(String args, Storage storage) {
+    public String Execute(String args, Storage storage) {
         Month z=null;
         StringBuilder base= new StringBuilder();
         do{

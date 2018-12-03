@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class II implements ICommand{
 
     @Override
-    public String Command(String command, Storage storage) {
+    public String Execute(String command, Storage storage) {
         //String liner="I UK 388/10 I UK 388/10";
         String[] commands=command.split("\\s+");
         if(commands.length<2) return "badargument";

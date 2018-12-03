@@ -6,7 +6,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toMap;
 
-public abstract class Hash {
+public abstract class Index {
     protected HashMap<String, LinkedList<Judgment>> hashMap=new HashMap<>();
 
     public void put(Judgment judgment, String name){

@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class VIIII implements ICommand {
     @Override
-    public String Command(String args, Storage storage) {
+    public String Execute(String args, Storage storage) {
         Map<String,Integer> sortedRefLeaderboard=storage.referencedRegulationsHash.getLeaderboard();
 
         Integer refIter=0;

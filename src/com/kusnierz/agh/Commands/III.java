@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class III implements ICommand {
     @Override
-    public String Command(String arg, Storage storage) {
+    public String Execute(String arg, Storage storage) {
         LinkedList<Judgment> a = storage.signatureHash.getByString(arg);
         if (a != null)
             for (Judgment judgment : a)

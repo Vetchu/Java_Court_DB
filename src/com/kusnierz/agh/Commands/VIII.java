@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class VIII implements ICommand {
     @Override
-    public String Command(String args, Storage storage) {
+    public String Execute(String args, Storage storage) {
         String[] courtTypes=storage.courtTypeHash.getHashMapKeys();
         StringBuilder base = new StringBuilder();
         for(String courtType:courtTypes){

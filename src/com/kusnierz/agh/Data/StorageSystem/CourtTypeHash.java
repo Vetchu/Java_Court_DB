@@ -1,5 +1,5 @@
 package com.kusnierz.agh.Data.StorageSystem;
 
-public class CourtTypeHash extends Hash {
+public class CourtTypeHash extends Index {
 
 }

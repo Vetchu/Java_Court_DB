@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class VI implements ICommand {
     @Override
-    public String Command(String args, Storage storage) {
+    public String Execute(String args, Storage storage) {
         Integer g=1;
         Map<String,Integer> sortedLeaderboard=storage.judgesHash.getLeaderboard();
         StringBuilder base= new StringBuilder();

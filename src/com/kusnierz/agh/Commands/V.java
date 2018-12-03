@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class V implements ICommand {
 
     @Override
-    public String Command(String arg, Storage storage) {
+    public String Execute(String arg, Storage storage) {
         LinkedList<Judgment> d=storage.judgesHash.getByString(arg);
         StringBuilder base= new StringBuilder();
         if(d!=null)

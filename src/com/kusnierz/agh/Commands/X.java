@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public class X implements ICommand {
     @Override
-    public String Command(String args, Storage storage) {
+    public String Execute(String args, Storage storage) {
         Integer i=0;
         Integer size=0;
         for (LinkedList<Judgment> ac:storage.signatureHash.getValues()) {
