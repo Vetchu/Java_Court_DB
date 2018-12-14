@@ -8,12 +8,14 @@ import java.text.DecimalFormatSymbols;
 import java.util.LinkedList;
 import java.util.Locale;
 
-public class X implements ICommand {
+public class jury implements ICommand {
     @Override
     public String Execute(String args, Storage storage) {
+        LinkedList<Judgment> a=storage.juryIndex.getByString(args);
+        /*
         Integer i=0;
         Integer size=0;
-        for (LinkedList<Judgment> ac:storage.signatureHash.getValues()) {
+        for (LinkedList<Judgment> ac:storage.signatureIndex.getValues()) {
             for(Judgment judgment:ac) {
                 i++;
                 size += judgment.getJugdes().size();
@@ -22,5 +24,7 @@ public class X implements ICommand {
         double before=(double)size/i;
         double avg=Double.valueOf(new DecimalFormat("#.##",new DecimalFormatSymbols(Locale.US)).format(before));
         return  "There are "+i+" unique cases with average "+avg+" judges per case.";
+        */
+        return "There are " +(a==null?String.valueOf(0): String.valueOf(a.size()))+" judgments having number of judges equal to "+args ;
     }
 }

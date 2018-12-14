@@ -5,7 +5,7 @@ import com.kusnierz.agh.Data.Storage;
 
 import java.util.LinkedList;
 
-public class II implements ICommand{
+public class rubrum implements ICommand{
 
     @Override
     public String Execute(String command, Storage storage) {
@@ -21,7 +21,7 @@ public class II implements ICommand{
 
         StringBuilder base= new StringBuilder();
         for (String sig:sigs) {
-            LinkedList<Judgment> a = storage.signatureHash.getByString(sig);
+            LinkedList<Judgment> a = storage.signatureIndex.getByString(sig);
             if(a!=null) {
                 for (Judgment judgment : a)
                     base.append(judgment.toString());

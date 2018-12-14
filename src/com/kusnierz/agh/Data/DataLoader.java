@@ -52,12 +52,14 @@ public class DataLoader {
             judgment.Date= LocalDate.parse((String) object.get("judgmentDate"));
             judgment.CourtType = (String) object.get("courtType");
             judgment.JudgmentType = (String) object.get("judgmentType");
+            judgment.content = (String) object.get("textContent");
 
             JSONArray judgeArray= (JSONArray) object.get("judges");
             for(Object rawjudge:judgeArray){
                  Judge judge=new Judge();
                  judge.name=(String) ((JSONObject)rawjudge).get("name");
-                 judge.specialRole=  ((JSONArray)((JSONObject)rawjudge).get("specialRoles")).size()>0?(String)((JSONArray) ((JSONObject)rawjudge).get("specialRoles")).get(0) : null;
+                 judge.specialRole=  ((JSONArray)((JSONObject)rawjudge).get("specialRoles")).size()>0?
+                         (String)((JSONArray) ((JSONObject)rawjudge).get("specialRoles")).get(0) : null;
                  judgment.Jugdes.add(judge);
             }
             JSONArray referencedRegulationsArray= (JSONArray) object.get("referencedRegulations");

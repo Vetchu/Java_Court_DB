@@ -4,10 +4,10 @@ import com.kusnierz.agh.Data.Storage;
 
 import java.util.Map;
 
-public class VIIII implements ICommand {
+public class regulations implements ICommand {
     @Override
     public String Execute(String args, Storage storage) {
-        Map<String,Integer> sortedRefLeaderboard=storage.referencedRegulationsHash.getLeaderboard();
+        Map<String,Integer> sortedRefLeaderboard=storage.referencedRegulationsIndex.getLeaderboard();
 
         Integer refIter=0;
         StringBuilder base= new StringBuilder();

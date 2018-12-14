@@ -9,7 +9,7 @@ public class Judgment {
     public LocalDate Date;
     public String CourtType;
     public String JudgmentType;
-
+    public String content;
 
 
     public LinkedList<String> Refs=new LinkedList<String>();;
@@ -30,9 +30,9 @@ public class Judgment {
         for (Judge judge:Jugdes)
             judgesString+=judge.toString();
 
-        return  "SignatureHash: " + Signature + '\n' +
+        return  "Signature: " + Signature + '\n' +
                 "Date: " + Date + '\n' +
-                "CourtTypeHash: " + CourtType + '\n' +
+                "CourtType: " + CourtType + '\n' +
                 "Jugdes: " +'\n'+ judgesString+'\n';
                 //"JugdmentType: "+JudgmentType+"\n";
     }

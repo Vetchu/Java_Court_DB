@@ -4,21 +4,23 @@ import com.kusnierz.agh.Data.StorageSystem.*;
 
 
 public class Storage {
-    public SignatureHash signatureHash =new SignatureHash();
-    public JudgesHash judgesHash =new JudgesHash();
-    public MonthHash monthHash =new MonthHash();
-    public CourtTypeHash courtTypeHash =new CourtTypeHash();
-    public ReferencedRegulationsHash referencedRegulationsHash =new ReferencedRegulationsHash();
+    public Index signatureIndex =new Index();
+    public Index judgesIndex =new Index();
+    public Index monthIndex =new Index();
+    public Index courtTypeIndex =new Index();
+    public Index referencedRegulationsIndex =new Index();
+    public Index juryIndex=new Index();
 
     public void insert(Judgment judgment){
-        this.signatureHash.put(judgment,judgment.Signature);
-        this.monthHash.put(judgment, judgment.Date.getMonth().toString());
-        this.courtTypeHash.put(judgment, judgment.CourtType);
+        this.signatureIndex.put(judgment,judgment.Signature.toLowerCase());
+        this.monthIndex.put(judgment, judgment.Date.getMonth().toString().toLowerCase());
+        this.courtTypeIndex.put(judgment, judgment.CourtType.toLowerCase());
         for(Judge judge: judgment.getJugdes()) {
-            this.judgesHash.put(judgment, judge.name);
+            this.judgesIndex.put(judgment, judge.name.toLowerCase());
         }
         for(String ref: judgment.getRefs()) {
-            this.referencedRegulationsHash.put(judgment,ref);
+            this.referencedRegulationsIndex.put(judgment,ref.toLowerCase());
         }
+        this.juryIndex.put(judgment, String.valueOf(judgment.Jugdes.size()));
     }
 }

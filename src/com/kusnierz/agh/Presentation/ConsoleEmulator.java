@@ -16,15 +16,16 @@ public class ConsoleEmulator {
     private HashMap<String, ICommand> CommandIndex=new HashMap<>();
 
     private void LoadCommands(){
-        CommandIndex.put("sig",new II());
-        CommandIndex.put("reason",new III());
-        CommandIndex.put("judge",new V());
-        CommandIndex.put("leaderboard",new VI());
-        CommandIndex.put("month",new VII());
-        CommandIndex.put("courttype",new VIII());
-        CommandIndex.put("refreg",new VIIII());
-        CommandIndex.put("average",new X());
+        CommandIndex.put("rubrum",new rubrum());
+        CommandIndex.put("content",new content());
+        CommandIndex.put("judge",new judge());
+        CommandIndex.put("judges",new judges());
+        CommandIndex.put("months",new months());
+        CommandIndex.put("courts",new courts());
+        CommandIndex.put("regulations",new regulations());
+        CommandIndex.put("jury",new jury());
         CommandIndex.put("help",new Help());
+        CommandIndex.put("exit",new Exit());
     }
 
     private ConsoleEmulator(String filePath, String prompt) throws IOException {
@@ -32,7 +33,6 @@ public class ConsoleEmulator {
 
         Terminal terminal = TerminalBuilder.builder()
                 .build();
-
 
         LineReader lineReader = LineReaderBuilder.builder()
                 .terminal(terminal)
@@ -49,20 +49,28 @@ public class ConsoleEmulator {
 
             if (line == "\n") continue;
             String[] command = line.split("\\s+", 2);
-            ICommand dummy;
-            if((dummy=CommandIndex.get(command[0].toLowerCase()))!=null) {
+            ICommand dummy=CommandIndex.get(command[0].toLowerCase());
+            if(dummy!=null) {
                 if(command.length==1)
                 System.out.println(dummy.Execute("",storage));
                 else
-                    System.out.println(dummy.Execute(command[1],storage));
+                    System.out.println(dummy.Execute(command[1].toLowerCase(),storage));
             }
-            else terminal.writer().println("Incorrect command");
+            else terminal.writer().println("Incorrect command. If you wish to know the commands, type 'HELP'");
         }
     }
 
     public static void main(String[] args) {
+        String filepath="./Json";
+        if(args.length>0)
+            try {
+                new ConsoleEmulator(filepath,"prompt> ");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            else
         try {
-            new ConsoleEmulator("./Json","prompt> ");
+            new ConsoleEmulator(filepath,"prompt> ");
         } catch (IOException e) {
             e.printStackTrace();
         }
