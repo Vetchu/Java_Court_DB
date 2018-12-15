@@ -4,7 +4,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,36 +17,57 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class DataLoader {
-    public Storage loadData(String dirPath) throws IOException {
+    public Storage loadData(List<String> dirPaths) throws IOException {
         Storage storage = new Storage();
-        try (Stream<Path> paths = Files.walk(Paths.get(dirPath))) {
-            paths
-                    .filter(Files::isRegularFile)
-                    .forEach(path -> {
-                        try {
-                            for (Judgment judgment : parseData(String.valueOf(path))) {
+        String workingDir = System.getProperty("user.dir");
+
+        for(String dir:dirPaths) {
+            try (Stream<Path> paths = Files.walk(Paths.get(workingDir+"/"+dir))) {
+                paths
+                        .filter(Files::isRegularFile)
+                        .forEach(path -> {
+                            try {
+                                for (Judgment judgment : parseData(String.valueOf(path))) {
                                     storage.insert(judgment);
                                 }
-                        } catch (IOException | ParseException e) {
-                            e.printStackTrace();
-                        }
-                    });
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        });
+            }
+
         }
             return storage;
         }
 
-    private List<Judgment> parseData(String path) throws IOException, ParseException {
-        JSONParser parser= new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(new FileReader(path));
-        JSONArray items= (JSONArray) json.get("items");
-        return courtCaseFactory(items);
+    private List<Judgment> parseData(String path) throws Exception {
+        String[] filename=path.split("/");
+        String[] type=filename[filename.length-1].split("\\.");
+        List<Judgment> judgments;
+        switch (type[type.length-1]){
+            case "json":
+                JSONParser parser= new JSONParser();
+                JSONObject json = (JSONObject) parser.parse(new FileReader(path));
+                JSONArray items= (JSONArray) json.get("items");
+                judgments= jsonCourtCaseFactory(items);
+                break;
+            case "html":
+                File htmlfile=new File(path);
+                Document doc= Jsoup.parse(htmlfile,"UTF-8","");
+                judgments=htmlCourtCaseFactory(doc);
+                break;
+            default:
+                throw new Exception("Unable to parse file "+path);
+        }
+        return judgments;
     }
 
-    private List<Judgment> courtCaseFactory(JSONArray items) {
+    private List<Judgment> jsonCourtCaseFactory(JSONArray items) {
         List<Judgment> judgmentFactory = new ArrayList<>();
         for (Object rawobject: items) {
             JSONObject object=(JSONObject) rawobject;
@@ -72,13 +98,65 @@ public class DataLoader {
         return judgmentFactory;
     }
 
+    private List<Judgment> htmlCourtCaseFactory(Document doc){
+        Element body = doc.body();
+        List<Element> listavalues=body.getElementsByClass("niezaznaczona");
 
-    public static void main(String[] main){
-        DataLoader dataLoader=new DataLoader();
-        try {
-            dataLoader.loadData("./Json/judgments-348.json");
-        } catch (IOException e) {
-            e.printStackTrace();
+        Judgment judgment =new Judgment();
+        //signature
+        String signature=body.getElementsByClass("war_header").get(0).html().split(" -")[0];
+        //judgmentDate
+        String judgmentDate="";
+        //courtType
+        String courtType="";
+        //judges
+        LinkedList<Judge> finaljudges=new LinkedList<>();
+
+        for(Element niezaznaczon:listavalues){
+            switch (niezaznaczon.getElementsByClass("lista-label").html()){
+                case "Data orzeczenia":
+                    judgmentDate= niezaznaczon.getElementsByClass("info-list-value").get(0).getElementsByTag("td").get(1).html();
+                    break;
+                case "Sąd":
+                    courtType=niezaznaczon.getElementsByClass("info-list-value").html().split(" ")[0]+" "+niezaznaczon.getElementsByClass("info-list-value").html().split(" ")[1]+" "+niezaznaczon.getElementsByClass("info-list-value").html().split(" ")[2];
+                    break;
+                case "Sędziowie":
+                    String[] protojudges= niezaznaczon.getElementsByClass("info-list-value").html().split("<br>");
+                    for(String judge:protojudges){
+                        Judge newjudge = new Judge();
+                        String[] a=judge.split("/");
+                        if(a.length>1){
+                            newjudge.specialRole=a[1];
+                        }
+                        newjudge.name=a[0];
+                        finaljudges.add(newjudge);
+                    }
+                    break;
+            }
+
+
         }
+
+        //refs
+        Elements protoRefs= body.getElementsByClass("nakt");
+        LinkedList<String> finalRefs=new LinkedList<>();
+        for(Element ref:protoRefs){
+            finalRefs.add(ref.html());
+        }
+        //content
+        String content=body.getElementsByClass("info-list-value-uzasadnienie").get(0).child(0).html();
+
+        judgment.Signature=signature;
+        judgment.Date= LocalDate.parse(judgmentDate);
+        judgment.CourtType = courtType;
+        judgment.content = content;
+        judgment.Jugdes=finaljudges;
+        judgment.Refs=finalRefs;
+
+        List<Judgment> judgments=new ArrayList<>();
+        judgments.add(judgment);
+
+
+        return judgments;
     }
 }

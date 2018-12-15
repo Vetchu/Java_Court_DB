@@ -9,7 +9,7 @@ public class regulations implements ICommand {
     public String Execute(String args, Storage storage) {
         Map<String,Integer> sortedRefLeaderboard=storage.referencedRegulationsIndex.getLeaderboard();
 
-        Integer refIter=0;
+        Integer refIter=1;
         StringBuilder base= new StringBuilder();
         for(String sort:sortedRefLeaderboard.keySet()){
             if(refIter<11)
