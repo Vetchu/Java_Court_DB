@@ -54,7 +54,6 @@ public class ConsoleEmulator {
         FileWriter fr=null;
         BufferedWriter br = null;
 
-
         while(true) {
             line = lineReader.readLine(this.prompt, (char) 0);
             if (line == "\n") continue;
