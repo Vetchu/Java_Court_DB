@@ -3,7 +3,6 @@ package com.kusnierz.agh.Data;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -76,7 +75,20 @@ public class DataLoader {
             judgment.Id =  ((Long)  object.get("id")).intValue();
             judgment.Signature=(String) ((JSONObject)((JSONArray) object.get("courtCases")).get(0)).get("caseNumber");
             judgment.Date= LocalDate.parse((String) object.get("judgmentDate"));
-            judgment.CourtType = (String) object.get("courtType");
+            switch((String) object.get("courtType")){
+                case "common":
+                    judgment.CourtType = CourtType.common;
+                    break;
+                case "national_appeal_chamber":
+                    judgment.CourtType = CourtType.national_appeal_chamber;
+                    break;
+                case "constitutional_tribunal":
+                    judgment.CourtType = CourtType.tribunal;
+                    break;
+                case "supreme":
+                    judgment.CourtType = CourtType.supreme;
+                    break;
+            }
             judgment.JudgmentType = (String) object.get("judgmentType");
             judgment.content = (String) object.get("textContent");
 
@@ -118,7 +130,7 @@ public class DataLoader {
                     judgmentDate= niezaznaczon.getElementsByClass("info-list-value").get(0).getElementsByTag("td").get(1).html();
                     break;
                 case "Sąd":
-                    courtType=niezaznaczon.getElementsByClass("info-list-value").html().split(" ")[0]+" "+niezaznaczon.getElementsByClass("info-list-value").html().split(" ")[1]+" "+niezaznaczon.getElementsByClass("info-list-value").html().split(" ")[2];
+                    courtType=niezaznaczon.getElementsByClass("info-list-value").html().split(" ")[0];
                     break;
                 case "Sędziowie":
                     String[] protojudges= niezaznaczon.getElementsByClass("info-list-value").html().split("<br>");
@@ -133,22 +145,22 @@ public class DataLoader {
                     }
                     break;
             }
-
-
         }
 
         //refs
         Elements protoRefs= body.getElementsByClass("nakt");
         LinkedList<String> finalRefs=new LinkedList<>();
         for(Element ref:protoRefs){
-            finalRefs.add(ref.html());
+            String sref=ref.html();
+            sref=sref.split("\\s*-\\s*")[0];
+            finalRefs.add(sref);
         }
         //content
         String content=body.getElementsByClass("info-list-value-uzasadnienie").get(0).child(0).html();
 
         judgment.Signature=signature;
         judgment.Date= LocalDate.parse(judgmentDate);
-        judgment.CourtType = courtType;
+        judgment.CourtType = courtType.equals("Wojewódzki") ?CourtType.common_administrative : CourtType.national_administrative;
         judgment.content = content;
         judgment.Jugdes=finaljudges;
         judgment.Refs=finalRefs;

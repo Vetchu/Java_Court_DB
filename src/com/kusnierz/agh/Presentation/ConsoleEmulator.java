@@ -37,7 +37,7 @@ public class ConsoleEmulator {
         this.prompt=prompt;
 
         Terminal terminal = TerminalBuilder.builder()
-                .system(true)
+                //.system(true)
                 .build();
 
         LineReader lineReader = LineReaderBuilder.builder()
