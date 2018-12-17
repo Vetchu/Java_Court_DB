@@ -13,22 +13,19 @@ public enum CourtType {
         switch (this){
             case common:
                 return  "common";
-            break;
             case tribunal:
                 return  "tribunal";
-            break;
             case national_administrative:
                 return  "national_administrative";
-            break;
+
             case common_administrative:
                 return  "common_administrative";
-            break;
-            case supreme:
+             case supreme:
                 return  "supreme";
-            break;
+
             case national_appeal_chamber:
                 return  "national_appeal_chamber";
-            break;
         }
+        return null;
     }
 }
