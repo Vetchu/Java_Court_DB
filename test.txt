@@ -1,0 +1,19 @@
+courts
+national_appeal_chamber 130
+common 703
+constitutional_tribunal 47
+naczelny sąd administracyjny 62
+supreme 120
+wojewódzki sąd administracyjny 938
+
+help
+rubrum - wyświetla metryki jednego lub wielu orzeczeń , na podstawie sygnatur oddzielonych przecinkami (pierwsza wartość w polu courtCases)
+content - wyświetla uzasadnienie (czyli treści pola textContent)
+judge - wyświetla liczbę orzeczeń dla wybranego sędziego
+judges - wyświetla 10 sędziów, którzy wydali najwięcej orzeczeń
+months - wyświetla liczbę orzeczeń w poszczególnych miesiącach (rozkład statystyczny)
+courts - wyświetla liczbę orzeczeń ze względu na typ sądu (rozkład statystyczny)
+regulations - wyświetla 10 najczęściej przywoływanych ustaw
+jury - wyświetla liczbę spraw przypadających na określony skład sędziowski (określoną liczbę sędziów)
+help - wyświetla tą pomoc
+exit - kończy działanie programu
