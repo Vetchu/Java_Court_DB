@@ -7,27 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2a000ef-1b26-4380-81ad-103c655fb6e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/out/out.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/out/out.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/content.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/content.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/courts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/courts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/judge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/judge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/jury.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/jury.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/months.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/months.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/regulations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/regulations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/rubrum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Commands/rubrum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/Storage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/CourtType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/CourtType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/DataLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Index.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Judge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Judge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Judgment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Judgment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Regulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/Regulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/RegulationIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/RegulationIndex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/kusnierz/agh/Presentation/ConsoleEmulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/kusnierz/agh/Presentation/ConsoleEmulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,7 +77,7 @@
         <counts>
           <entry key="MF" value="27" />
           <entry key="dummy" value="79" />
-          <entry key="java" value="10446" />
+          <entry key="java" value="10480" />
           <entry key="json" value="1" />
           <entry key="regexp" value="2" />
           <entry key="txt" value="9" />
@@ -104,7 +85,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10446" />
+          <entry key="JAVA" value="10480" />
           <entry key="JSON" value="1" />
           <entry key="Manifest" value="27" />
           <entry key="PLAIN_TEXT" value="88" />
@@ -200,8 +181,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/DataLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="166" column="84" selection-start-line="166" selection-start-column="84" selection-end-line="166" selection-end-column="84" />
+            <state relative-caret-position="420">
+              <caret line="166" column="87" selection-start-line="166" selection-start-column="87" selection-end-line="166" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -310,7 +291,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="787" />
     <option name="width" value="1272" />
     <option name="height" value="768" />
@@ -391,7 +372,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="json.simple&#9;FILE&#9;file:///home/vetch/IdeaProjects/Pohl/lib/org.json.simple-0.4.jar" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545145473112" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545145608836" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../agh-polish-legal-docs-parser" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -571,7 +552,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1164" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49857143" visible="true" weight="0.23052295" />
       <window_info id="Structure" order="1" sideWeight="0.50142854" side_tool="true" weight="0.12860192" />
@@ -581,14 +561,14 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49893278" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.5613661" visible="true" weight="0.27708533" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49839914" weight="0.32885906" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5613661" weight="0.27708533" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39980826" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4994664" weight="0.32981783" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49893278" weight="0.2042186" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.43863395" side_tool="true" visible="true" weight="0.27708533" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.49786553" visible="true" weight="0.2042186" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50213444" side_tool="true" visible="true" weight="0.2042186" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49733192" weight="0.32885906" />
       <window_info anchor="bottom" id="Dependency Viewer" order="11" weight="0.32981783" />
@@ -817,8 +797,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/kusnierz/agh/Data/StorageSystem/DataLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="166" column="84" selection-start-line="166" selection-start-column="84" selection-end-line="166" selection-end-column="84" />
+        <state relative-caret-position="420">
+          <caret line="166" column="87" selection-start-line="166" selection-start-column="87" selection-end-line="166" selection-end-column="87" />
         </state>
       </provider>
     </entry>
