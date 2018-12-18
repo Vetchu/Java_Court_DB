@@ -7,7 +7,7 @@ public class Judgment {
     Integer Id;
     public String Signature;
     public LocalDate Date;
-    public String CourtType;
+    public com.kusnierz.agh.Data.CourtType CourtType;
     public String JudgmentType;
     public String content;
 

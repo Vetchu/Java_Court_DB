@@ -37,7 +37,7 @@ public class ConsoleEmulator {
         this.prompt=prompt;
 
         Terminal terminal = TerminalBuilder.builder()
-                .system(true)
+                //.system(true)
                 .build();
 
         LineReader lineReader = LineReaderBuilder.builder()
@@ -53,7 +53,6 @@ public class ConsoleEmulator {
         LoadCommands();
         FileWriter fr=null;
         BufferedWriter br = null;
-
 
         while(true) {
             line = lineReader.readLine(this.prompt, (char) 0);

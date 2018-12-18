@@ -2,7 +2,6 @@
   <artifact type="jar" build-on-make="true" name="out">
     <output-path>$PROJECT_DIR$/out/artifacts/out</output-path>
     <root id="archive" name="out.jar">
-      <element id="module-output" name="Pohl" />
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
