@@ -17,12 +17,10 @@ public enum CourtType {
                 return  "tribunal";
             case national_administrative:
                 return  "national_administrative";
-
             case common_administrative:
                 return  "common_administrative";
              case supreme:
                 return  "supreme";
-
             case national_appeal_chamber:
                 return  "national_appeal_chamber";
         }

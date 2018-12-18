@@ -7,21 +7,19 @@ public class Judgment {
     Integer Id;
     public String Signature;
     public LocalDate Date;
-    public com.kusnierz.agh.Data.CourtType CourtType;
+    public CourtType CourtType;
     public String JudgmentType;
     public String content;
 
 
-    public LinkedList<String> Refs=new LinkedList<String>();;
+    public LinkedList<Regulation> Refs= new LinkedList<>();;
     public LinkedList<Judge> Jugdes=new LinkedList<Judge>();
-    public LinkedList<String> getRefs() {
+    public LinkedList<Regulation> getRefs() {
         return Refs;
     }
     public LinkedList<Judge> getJugdes() {
         return Jugdes;
     }
-
-
 
 
     @Override
@@ -34,6 +32,5 @@ public class Judgment {
                 "Date: " + Date + '\n' +
                 "CourtType: " + CourtType + '\n' +
                 "Jugdes: " +'\n'+ judgesString+'\n';
-                //"JugdmentType: "+JudgmentType+"\n";
     }
 }

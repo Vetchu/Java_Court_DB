@@ -75,7 +75,7 @@ public class DataLoader {
             judgment.Id =  ((Long)  object.get("id")).intValue();
             judgment.Signature=(String) ((JSONObject)((JSONArray) object.get("courtCases")).get(0)).get("caseNumber");
             judgment.Date= LocalDate.parse((String) object.get("judgmentDate"));
-            switch((String) object.get("courtType")){
+            switch(((String) object.get("courtType")).toLowerCase()){
                 case "common":
                     judgment.CourtType = CourtType.common;
                     break;
@@ -103,7 +103,10 @@ public class DataLoader {
             JSONArray referencedRegulationsArray= (JSONArray) object.get("referencedRegulations");
             for(Object rawRegulation:referencedRegulationsArray){
                 String regulation=(String) ((JSONObject)rawRegulation).get("journalTitle");
-                judgment.Refs.add(regulation);
+                Long JournalNumber=(Long) ((JSONObject)rawRegulation).get("journalNo");
+                Long Year=(Long) ((JSONObject)rawRegulation).get("journalYear");
+                Long Entry=(Long) ((JSONObject)rawRegulation).get("journalEntry");
+                judgment.Refs.add(new Regulation(JournalNumber,Year,Entry,regulation));
             }
             judgmentFactory.add(judgment);
         }
@@ -149,11 +152,11 @@ public class DataLoader {
 
         //refs
         Elements protoRefs= body.getElementsByClass("nakt");
-        LinkedList<String> finalRefs=new LinkedList<>();
+        LinkedList<Regulation> finalRefs=new LinkedList<>();
         for(Element ref:protoRefs){
             String sref=ref.html();
             sref=sref.split("\\s*-\\s*")[0];
-            finalRefs.add(sref);
+            finalRefs.add(new Regulation(null,null,null,sref));
         }
         //content
         String content=body.getElementsByClass("info-list-value-uzasadnienie").get(0).child(0).html();
