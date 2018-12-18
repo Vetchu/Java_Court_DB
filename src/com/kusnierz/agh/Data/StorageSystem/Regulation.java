@@ -1,4 +1,4 @@
-package com.kusnierz.agh.Data;
+package com.kusnierz.agh.Data.StorageSystem;
 
 import java.util.Objects;
 
@@ -14,7 +14,6 @@ public class Regulation {
         this.Entry=Entry;
         this.text=text;
     }
-
 
 
     @Override

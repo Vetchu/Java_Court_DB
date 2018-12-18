@@ -1,4 +1,4 @@
-package com.kusnierz.agh.Data;
+package com.kusnierz.agh.Data.StorageSystem;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -7,7 +7,7 @@ public class Judgment {
     Integer Id;
     public String Signature;
     public LocalDate Date;
-    public CourtType CourtType;
+    public com.kusnierz.agh.Data.StorageSystem.CourtType CourtType;
     public String JudgmentType;
     public String content;
 

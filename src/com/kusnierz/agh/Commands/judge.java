@@ -1,6 +1,6 @@
 package com.kusnierz.agh.Commands;
 
-import com.kusnierz.agh.Data.Judgment;
+import com.kusnierz.agh.Data.StorageSystem.Judgment;
 import com.kusnierz.agh.Data.Storage;
 
 import java.util.LinkedList;

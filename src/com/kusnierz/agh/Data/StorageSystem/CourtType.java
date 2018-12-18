@@ -1,4 +1,4 @@
-package com.kusnierz.agh.Data;
+package com.kusnierz.agh.Data.StorageSystem;
 
 public enum CourtType {
     common,

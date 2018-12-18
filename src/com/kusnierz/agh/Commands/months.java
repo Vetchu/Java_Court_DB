@@ -1,6 +1,6 @@
 package com.kusnierz.agh.Commands;
 
-import com.kusnierz.agh.Data.Judgment;
+import com.kusnierz.agh.Data.StorageSystem.Judgment;
 import com.kusnierz.agh.Data.Storage;
 
 import java.time.Month;
@@ -14,8 +14,7 @@ public class months implements ICommand{
         StringBuilder base= new StringBuilder();
         do{
             z = z==null?Month.JANUARY:Month.values()[z.ordinal() + 1];
-            LinkedList<Judgment> b=storage.monthIndex.getByString(String.valueOf(z));
-            //if
+            LinkedList<Judgment> b=storage.monthIndex.getByString(z.toString());
             base.append(z.toString()).append(" ").append((b != null) ? b.size() : 0).append("\n");
         }while(z!=Month.DECEMBER);
         return base.toString();

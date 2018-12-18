@@ -4,22 +4,22 @@ import java.util.*;
 
 import static java.util.stream.Collectors.toMap;
 
-public class Index {
-    protected HashMap<String, LinkedList<Judgment>> hashMap=new HashMap<>();
+public class RegulationIndex {
+    protected HashMap<String, LinkedList<Regulation>> hashMap=new HashMap<>();
 
-    public void put(Judgment judgment, String name){
-        hashMap.computeIfAbsent(name, k -> new LinkedList<Judgment>());
-        hashMap.get(name).add(judgment);
+    public void put(Regulation regulation, String name){
+        hashMap.computeIfAbsent(name, k -> new LinkedList<Regulation>());
+        hashMap.get(name).add(regulation);
     }
 
-    public LinkedList<Judgment> getByString(String string){
+    public LinkedList<Regulation> getByString(String string){
         return hashMap.get(string);
     }
 
     public String[] getHashMapKeys(){
         return  this.hashMap.keySet().toArray(new String[0]);
     }
-    public ArrayList<LinkedList<Judgment>> getValues(){
+    public ArrayList<LinkedList<Regulation>> getValues(){
         return new ArrayList<>(this.hashMap.values());
     }
 

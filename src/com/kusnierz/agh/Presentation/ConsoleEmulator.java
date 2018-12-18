@@ -1,7 +1,7 @@
 package com.kusnierz.agh.Presentation;
 
 import com.kusnierz.agh.Commands.*;
-import com.kusnierz.agh.Data.DataLoader;
+import com.kusnierz.agh.Data.StorageSystem.DataLoader;
 import com.kusnierz.agh.Data.Storage;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
@@ -33,7 +33,7 @@ public class ConsoleEmulator {
         CommandIndex.put("exit",new Exit());
     }
 
-    private ConsoleEmulator(List<String> filePaths, String prompt, String outFilePath) throws IOException {
+    public ConsoleEmulator(List<String> filePaths, String prompt, String outFilePath) throws IOException {
         this.prompt=prompt;
 
         Terminal terminal = TerminalBuilder.builder()
@@ -44,6 +44,7 @@ public class ConsoleEmulator {
                 .terminal(terminal)
                 .build();
 
+        System.out.println("Welcome to SuperSAOSIndexer 3000!");
         System.out.println("Terminal initialized, loading sentences...");
         String line;
         DataLoader loader=new DataLoader();
@@ -99,7 +100,7 @@ public class ConsoleEmulator {
     }
 
     public static void main(String[] args) {
-        List<String> filepaths= Arrays.asList("HTML","Json");
+        List<String> filepaths= Arrays.asList(args[1],args[2]);
 
         try {
             new ConsoleEmulator(filepaths,"prompt> ",args[0]);

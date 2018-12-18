@@ -12,8 +12,9 @@ public class regulations implements ICommand {
         Integer refIter=1;
         StringBuilder base= new StringBuilder();
         for(String sort:sortedRefLeaderboard.keySet()){
-            if(refIter<11)
-                base.append(refIter++).append(" ").append(sort).append(" ").append(sortedRefLeaderboard.get(sort)).append("\n");
+            if(refIter<11) {
+                base.append(refIter++).append(" ").append(storage.referencedRegulationsIndex.getByString(sort).get(0).toString()).append(" ").append(sortedRefLeaderboard.get(sort)).append("\n");
+            }
         }
         return base.toString();
     }

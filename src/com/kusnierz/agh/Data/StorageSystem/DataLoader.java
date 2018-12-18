@@ -1,5 +1,10 @@
-package com.kusnierz.agh.Data;
+package com.kusnierz.agh.Data.StorageSystem;
 
+import com.kusnierz.agh.Data.Storage;
+import com.kusnierz.agh.Data.StorageSystem.CourtType;
+import com.kusnierz.agh.Data.StorageSystem.Judge;
+import com.kusnierz.agh.Data.StorageSystem.Judgment;
+import com.kusnierz.agh.Data.StorageSystem.Regulation;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -159,7 +164,9 @@ public class DataLoader {
             finalRefs.add(new Regulation(null,null,null,sref));
         }
         //content
-        String content=body.getElementsByClass("info-list-value-uzasadnienie").get(0).child(0).html();
+        String content=body.getElementsByClass("info-list-value-uzasadnienie").size()<2 ?
+                body.getElementsByClass("info-list-value-uzasadnienie").get(0).child(0).html():
+                body.getElementsByClass("info-list-value-uzasadnienie").get(1).child(0).html();
 
         judgment.Signature=signature;
         judgment.Date= LocalDate.parse(judgmentDate);

@@ -1,12 +1,9 @@
 package com.kusnierz.agh.Commands;
 
-import com.kusnierz.agh.Data.Judgment;
+import com.kusnierz.agh.Data.StorageSystem.Judgment;
 import com.kusnierz.agh.Data.Storage;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.LinkedList;
-import java.util.Locale;
 
 public class jury implements ICommand {
     @Override

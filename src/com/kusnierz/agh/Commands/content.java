@@ -1,6 +1,6 @@
 package com.kusnierz.agh.Commands;
 
-import com.kusnierz.agh.Data.Judgment;
+import com.kusnierz.agh.Data.StorageSystem.Judgment;
 import com.kusnierz.agh.Data.Storage;
 
 import java.util.LinkedList;
@@ -13,10 +13,7 @@ public class content implements ICommand {
 
         //return a.get(0).
         if (a != null)
-            for (Judgment judgment : a)
-                if (judgment.JudgmentType.equals("REASONS")) {
-                    return judgment.toString();
-                }
+            return a.get(0).content;
 
         return "Could not find any case signed as " + arg;
     }

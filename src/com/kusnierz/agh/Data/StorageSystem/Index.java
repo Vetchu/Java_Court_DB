@@ -1,7 +1,5 @@
 package com.kusnierz.agh.Data.StorageSystem;
 
-import com.kusnierz.agh.Data.Judgment;
-
 import java.util.*;
 
 import static java.util.stream.Collectors.toMap;
