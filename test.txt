@@ -1,0 +1,8 @@
+courts
+national_appeal_chamber 130
+common 703
+constitutional_tribunal 47
+naczelny sąd administracyjny 62
+supreme 120
+wojewódzki sąd administracyjny 938
+
